@@ -18,9 +18,9 @@ runs:
   steps:
     - run: |
         if [ -z "${{ inputs.tag_name }}" ]; then
-          echo "TAG=$tagVar" >> $GITHUB_ENV
+          echo "TAG=$(date +%s)" >> $GITHUB_ENV
         else
-          echo "TAG=$tagVar" >> $GITHUB_ENV
+          echo "TAG=${{ inputs.tag_name }}" >> $GITHUB_ENV
         fi
         
         docker build . --file ${{inputs.path_dockerfile}} --tag ${{inputs.image_name}}:$TAG
