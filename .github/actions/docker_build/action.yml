@@ -1,8 +1,27 @@
 name: docker-build-custom-action
 description: docker build
+inputs:
+  path_dockerfile:
+    description: "path for the docker file"
+    required: false
+    default: "Dockerfile"
+  image_name:
+    description: "custom name for the image"
+    required: false
+    default: "cicdimage"
+  tag_name:
+    description: "tag name"
+    required: false
+    default: 'name tag'
 runs:
   using: composite
   steps:
     - run: |
-        docker build . --file Dockerfile --tag cicdimage:$(date +%s)
-      shell: bash
+        if [ -z "${{ inputs.{{tag_name}} }}" ]; then
+          echo "TAG=$(date +%s)" >> $GITHUB_ENV
+        else
+          echo "TAG=${{ inputs.{{tag_name}} }}" >> $GITHUB_ENV
+        fi
+        
+        docker build . --file ${{inputs.path_dockerfile}} --tag ${{input.image_name}}$GITHUB_ENV
+  shell: bash

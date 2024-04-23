@@ -17,6 +17,10 @@ jobs:
 
     - name: Build the Docker image
       uses: simaomata13/academy/.github/actions/docker_build@main
+      with:
+        path_dockerfile: Dockerfile
+        image_name: cicdimage2
+        tag_name: $(date +%s)
 
     - name: List Docker images
       run: docker image list
