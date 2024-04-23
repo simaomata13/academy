@@ -17,16 +17,13 @@ runs:
   using: composite
   steps:
     - run: |
-        tagVar = ""
         if [ -z "${{ inputs.tag_name }}" ]; then
-          tagVar = $(date +%s)"
           echo "TAG=$tagVar" >> $GITHUB_ENV
         else
-          tagVar = ${{ inputs.tag_name }}
           echo "TAG=$tagVar" >> $GITHUB_ENV
         fi
         
-        docker build . --file ${{inputs.path_dockerfile}} --tag ${{inputs.image_name}}:$tagVar
+        docker build . --file ${{inputs.path_dockerfile}} --tag ${{inputs.image_name}}:$TAG
         
-        echo "DOCKER_IMAGE_NAME=${{inputs.image_name}}:$tagVar" >> $GITHUB_ENV
+        echo "DOCKER_IMAGE_NAME=${{inputs.image_name}}:$TAG" >> $GITHUB_ENV
       shell: bash
