@@ -31,6 +31,7 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+
     - name: Push image to Docker Hub
       uses: simaomata13/academy/.github/actions/docker_build@main
       with:
