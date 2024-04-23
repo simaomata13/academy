@@ -1,0 +1,8 @@
+name: docker-build-custom-action
+description: docker build
+runs:
+  using: composite
+  steps:
+    - run: |
+        docker build . --file Dockerfile --tag cicdimage:$(date +%s)
+      shell: bash
