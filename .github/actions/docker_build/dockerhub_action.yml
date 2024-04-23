@@ -1,0 +1,19 @@
+name: dockerhub-secrets-custom-action
+description: dockerhub secrets fetch
+inputs:
+  dockerhub_username:
+    description: "dockerhub username"
+    required: true
+  image_name:
+    description: "image name"
+    required: true
+runs:
+  using: composite
+  steps:
+    - run: |
+        
+        docker tag ${{inputs.image_name}} ${{inputs.dockerhub_username}}
+        
+        docker image push ${{inputs.image_name}}
+
+      shell: bash

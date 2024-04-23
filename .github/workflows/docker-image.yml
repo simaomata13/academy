@@ -20,7 +20,7 @@ jobs:
       with:
         path_dockerfile: Dockerfile
         image_name: cicdimage2
-        tag_name:
+        tag_name: 1231421
 
     - name: List Docker images
       run: docker image list
@@ -30,3 +30,9 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: Push image to Docker Hub
+      uses: simaomata13/academy/.github/actions/docker_build/dockerhub_action.yml
+      with:
+        dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
+        image_name: cicdimage2
