@@ -20,7 +20,7 @@ jobs:
       with:
         path_dockerfile: Dockerfile
         image_name: cicdimage2
-        tag_name: 1212131
+        tag_name: sdadsda
 
     - name: List Docker images
       run: docker image list
