@@ -32,7 +32,7 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Push image to Docker Hub
-      uses: simaomata13/academy/.github/actions/docker_build/dockerhub_action.yml
+      uses: simaomata13/academy/.github/actions/docker_build@main
       with:
         dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
         image_name: cicdimage2
