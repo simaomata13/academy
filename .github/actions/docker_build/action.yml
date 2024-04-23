@@ -23,5 +23,5 @@ runs:
           echo "TAG=${{ inputs.tag_name }}" >> $GITHUB_ENV
         fi
         
-        docker build . --file ${{inputs.path_dockerfile}} --tag ${{inputs.image_name}}$GITHUB_ENV
+        docker build . --file ${{inputs.path_dockerfile}} --tag ${{inputs.image_name}}:$GITHUB_ENV
       shell: bash
