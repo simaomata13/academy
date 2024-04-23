@@ -17,7 +17,7 @@ runs:
   using: composite
   steps:
     - run: |
-        var tagVar = ""
+        tagVar = ""
         if [ -z "${{ inputs.tag_name }}" ]; then
           tagVar = $(date +%s)"
           echo "TAG=$tagVar" >> $GITHUB_ENV
